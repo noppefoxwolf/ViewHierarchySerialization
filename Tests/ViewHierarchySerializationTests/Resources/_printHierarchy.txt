@@ -1,0 +1,17 @@
+<DAWN.RootTabBarController 0x107846800>, state: appeared, view: <UILayoutContainerView: 0x10321deb0>
+   | <DAWN.RootTabItemNavigationController 0x118016400>, state: appeared, view: <UILayoutContainerView: 0x103315050>
+   |    | <TimelineUI.TimelinePageViewController 0x118017000>, state: appeared, view: <UICollectionViewControllerWrapperView: 0x103118700>
+   |    |    | <TimelineUI.TimelineViewController 0x102829400>, state: appeared, view: <UICollectionViewControllerWrapperView: 0x10173e030>
+   |    |    |    | <_TtGC7SwiftUI19UIHostingControllerGVS_15ModifiedContentV10TimelineUI10UnreadViewGVS_30_EnvironmentKeyWritingModifierGSqCS3_8Property____ 0x10781d400>, state: appeared, view: <_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentV10TimelineUI10UnreadViewGVS_30_EnvironmentKeyWritingModifierGSqCS3_8Property____: 0x103226bd0>
+   |    |    |    | <_TtGC7SwiftUI19UIHostingControllerV10TimelineUI22TimelineBackgroundView_ 0x102858e00>, state: appeared, view: <_TtGC7SwiftUI14_UIHostingViewV10TimelineUI22TimelineBackgroundView_: 0x103121a40>
+   | <DAWN.RootTabItemNavigationController 0x1078c6000>, state: disappeared, view: <UILayoutContainerView: 0x1032349b0> not in the window
+   |    | <NotificationsUI.NotificationPageViewController 0x102057800>, state: disappeared, view: (view not loaded)
+   + <UINavigationController 0x10223c400>, state: appeared, view: <UILayoutContainerView: 0x101787320>, presented with: <UIPresentationController: 0x1017a6d60>
+   |    | <ComposeUI.ComposeEditorViewController 0x10785e600>, state: appeared, view: <ComposeUI.EditorView: 0x1017ac1d0>
+   |    |    | <_TtGC7SwiftUI19UIHostingControllerGVS_15ModifiedContentV9ComposeUI13AccountButtonV18_SwiftData_SwiftUIP10$1d5b5420c37PassthroughModelContainerViewModifier__ 0x1039ea000>, state: appeared, view: <_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentV9ComposeUI13AccountButtonV18_SwiftData_SwiftUIP10$1d5b5420c37PassthroughModelContainerViewModifier__: 0x10304f800>
+   |    |    | <_TtGC7SwiftUI19UIHostingControllerV9ComposeUI14PollEditorView_ 0x1039e5e00>, state: appeared, view: <_TtGC7SwiftUI14_UIHostingViewV9ComposeUI14PollEditorView_: 0x10304a980>
+   |    |    | <_TtGC7SwiftUI19UIHostingControllerGVS_15ModifiedContentV9ComposeUI27ComposeMediaAttachmentsViewGVS_30_EnvironmentKeyWritingModifierGSqCS2_16ComposeViewModel____ 0x102856c00>, state: appeared, view: <_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentV9ComposeUI27ComposeMediaAttachmentsViewGVS_30_EnvironmentKeyWritingModifierGSqCS2_16ComposeViewModel____: 0x10316dda0>
+   |    |    | <_TtGC7SwiftUI19UIHostingControllerV9ComposeUI19SensitiveToggleView_ 0x107a20a00>, state: appeared, view: <_TtGC7SwiftUI14_UIHostingViewV9ComposeUI19SensitiveToggleView_: 0x1032a7ec0>
+   |    + <_TtGC7SwiftUI19UIHostingControllerV9ComposeUI9DraftView_ 0x103af5800>, state: appeared, view: <_TtGC7SwiftUI14_UIHostingViewV9ComposeUI9DraftView_: 0x1030df020>, presented with: <_UIFormSheetPresentationController: 0x1030b8e60>
+   |    |    | <SwiftUI.UIKitNavigationController 0x1021eb200>, state: appeared, view: <UILayoutContainerView: 0x1017d74e0>
+   |    |    |    | <_TtGC7SwiftUI32NavigationStackHostingControllerVS_7AnyView_ 0x1022c8a00>, state: appeared, view: <_TtCGC7SwiftUI32NavigationStackHostingControllerVS_7AnyView_P10$1d3ce3d6411HostingView: 0x1017c52c0>
