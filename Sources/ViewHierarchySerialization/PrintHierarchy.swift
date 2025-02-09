@@ -1,8 +1,8 @@
-public struct HierarchyData: Sendable {
-    public let hierarchies: [Hierarchy]
+public struct PrintHierarchy: Sendable {
+    public let lines: [PrintHierarchyLine]
 }
 
-public struct Hierarchy: Sendable {
+public struct PrintHierarchyLine: Sendable {
     public let header: Header
     public let controller: Controller
     public let state: State

@@ -5,22 +5,22 @@ public struct HierarchyDataDecoder {
     
     public init() {}
     
-    public func decode(from data: Data) throws -> HierarchyData {
+    public func decode(from data: Data) throws -> PrintHierarchy {
         guard let text = String(data: data, encoding: .utf8) else {
             throw HierarchyDataDecoderError.dataCorrupted
         }
         let lines = text.split(separator: .newlineSequence)
-        return HierarchyData(
-            hierarchies: try lines.map(decode(line:))
+        return PrintHierarchy(
+            lines: try lines.map(decode(line:))
         )
     }
     
-    internal func decode(line: Substring) throws -> Hierarchy {
-        let header = Reference<Hierarchy.Header>()
+    internal func decode(line: Substring) throws -> PrintHierarchyLine {
+        let header = Reference<PrintHierarchyLine.Header>()
         let controllerName = Reference<Substring>()
         let controllerAddress = Reference<Substring>()
-        let state = Reference<Hierarchy.State>()
-        let view = Reference<Hierarchy.View>()
+        let state = Reference<PrintHierarchyLine.State>()
+        let view = Reference<PrintHierarchyLine.View>()
         let regex = Regex {
             headerRegex(as: header)
             controllerRegex(name: controllerName, address: controllerAddress)
@@ -35,9 +35,9 @@ public struct HierarchyDataDecoder {
         guard let match = line.wholeMatch(of: regex) else {
             throw HierarchyDataDecoderError.invalidFormat
         }
-        return Hierarchy(
+        return PrintHierarchyLine(
             header: match[header],
-            controller: Hierarchy.Controller(
+            controller: PrintHierarchyLine.Controller(
                 name: String(match[controllerName]),
                 address: String(match[controllerAddress])
             ),
@@ -47,7 +47,7 @@ public struct HierarchyDataDecoder {
     }
     
     func viewRegex(
-        view: Reference<Hierarchy.View> = Reference<Hierarchy.View>()
+        view: Reference<PrintHierarchyLine.View> = Reference<PrintHierarchyLine.View>()
     ) -> some RegexComponent {
         Regex {
             "view: "
@@ -74,12 +74,12 @@ public struct HierarchyDataDecoder {
             } transform: {
                 switch String($0) {
                 case "(view not loaded)":
-                    return Hierarchy.View.notLoaded
+                    return PrintHierarchyLine.View.notLoaded
                 default:
                     let name = Reference<Substring>()
                     let address = Reference<Substring>()
                     let match = $0.wholeMatch(of: viewRegex(name: name, address: address))!
-                    return Hierarchy.View.loaded(String(match[name]), String(match[address]))
+                    return PrintHierarchyLine.View.loaded(String(match[name]), String(match[address]))
                 }
             }
         }
@@ -137,7 +137,7 @@ public struct HierarchyDataDecoder {
         }
     }
     
-    func stateRegex(state: Reference<Hierarchy.State> = Reference<Hierarchy.State>()) -> Regex<(Substring, Hierarchy.State)> {
+    func stateRegex(state: Reference<PrintHierarchyLine.State> = Reference<PrintHierarchyLine.State>()) -> Regex<(Substring, PrintHierarchyLine.State)> {
         Regex {
             "state: "
             Capture(as: state) {
@@ -146,12 +146,12 @@ public struct HierarchyDataDecoder {
                     "disappeared"
                 }
             } transform: {
-                Hierarchy.State(rawValue: String($0))!
+                PrintHierarchyLine.State(rawValue: String($0))!
             }
         }
     }
     
-    func headerRegex(as header: Reference<Hierarchy.Header> = Reference<Hierarchy.Header>()) -> Regex<(Substring, Hierarchy.Header)> {
+    func headerRegex(as header: Reference<PrintHierarchyLine.Header> = Reference<PrintHierarchyLine.Header>()) -> Regex<(Substring, PrintHierarchyLine.Header)> {
         Regex {
             Capture(as: header) {
                 ZeroOrMore {
@@ -162,7 +162,7 @@ public struct HierarchyDataDecoder {
                     }
                 }
             } transform: {
-                var positions: [Hierarchy.Position] = []
+                var positions: [PrintHierarchyLine.Position] = []
                 for character in $0 {
                     switch character {
                     case "|": positions.append(.child)
@@ -170,7 +170,7 @@ public struct HierarchyDataDecoder {
                     default: break
                     }
                 }
-                return Hierarchy.Header(positions: positions)
+                return PrintHierarchyLine.Header(positions: positions)
             }
         }
     }
